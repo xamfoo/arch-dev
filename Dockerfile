@@ -8,6 +8,5 @@ RUN useradd nonroot && \
 RUN pacman -S --noconfirm base-devel git && \
   git clone https://aur.archlinux.org/xorgxrdp.git && \
   cd xorgxrdp && \
-  su nonroot - && \
-  id && \
-  makepkg -si
+  runuser -l nonroot -c 'id' && \
+  runuser -l  nonroot -c 'makepkg -si'
