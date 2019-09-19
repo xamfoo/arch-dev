@@ -1,7 +1,7 @@
 FROM archlinux/base
 
 RUN pacman -Sy
-RUN pacman -S --noconfirm base
+RUN pacman -S --noconfirm sudo
 RUN useradd nonroot && \
   echo "nonroot ALL = (ALL) NOPASSWD: ALL" > /etc/sudoers.d/nonroot
 RUN pacman -S --noconfirm base-devel git && \
