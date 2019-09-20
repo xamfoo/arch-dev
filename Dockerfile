@@ -1,11 +1,10 @@
 FROM archlinux/base
 
 RUN pacman -Sy
-RUN pacman -S --noconfirm sudo
+RUN pacman -S --noconfirm sudo base-devel git
 RUN useradd -m nonroot && \
   echo "nonroot ALL = (ALL) NOPASSWD: ALL" > /etc/sudoers.d/nonroot && \
   chmod 0440 /etc/sudoers.d/nonroot
-RUN pacman -S --noconfirm base-devel git
 RUN cd /tmp && \
   runuser nonroot -c 'git clone https://aur.archlinux.org/xrdp.git && cd xrdp && makepkg --noconfirm -si'
 RUN cd /tmp && \
