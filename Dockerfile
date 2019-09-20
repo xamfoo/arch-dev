@@ -10,6 +10,8 @@ RUN cd /tmp && \
 RUN cd /tmp && \
   runuser nonroot -c 'git clone https://aur.archlinux.org/xorgxrdp.git && cd xorgxrdp && gpg --recv-keys 9F72CDBC01BF10EB && makepkg --noconfirm -si'
 RUN cd /tmp && \
+  runuser nonroot -c 'git clone https://aur.archlinux.org/uuid.git && cd uuid && makepkg --noconfirm -si'
+RUN cd /tmp && \
   runuser nonroot -c 'git clone https://aur.archlinux.org/guacamole-server.git && cd guacamole-server && makepkg --noconfirm -si'
 RUN pacman -S --noconfirm openssh
 RUN pacman -Sc --noconfirm
