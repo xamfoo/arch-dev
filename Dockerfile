@@ -13,4 +13,4 @@ RUN pacman -S --noconfirm openssh
 RUN pacman -Sc --noconfirm
 
 ENV container docker
-STOPSIGNAL SIGRTMIN +3
+STOPSIGNAL SIGRTMIN+3
