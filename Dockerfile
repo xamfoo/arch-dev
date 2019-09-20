@@ -7,13 +7,7 @@ RUN useradd -m nonroot && \
   chmod 0440 /etc/sudoers.d/nonroot
 RUN cd /tmp && \
   runuser nonroot -c 'git clone https://aur.archlinux.org/yay.git && cd yay && makepkg --noconfirm -si'
-RUN cd /tmp && \
-  runuser nonroot -c 'git clone https://aur.archlinux.org/xrdp.git && cd xrdp && makepkg --noconfirm -si'
-RUN cd /tmp && \
-  runuser nonroot -c 'git clone https://aur.archlinux.org/xorgxrdp.git && cd xorgxrdp && gpg --recv-keys 9F72CDBC01BF10EB && makepkg --noconfirm -si'
-RUN cd /tmp && \
-  runuser nonroot -c 'git clone https://aur.archlinux.org/uuid.git && cd uuid && makepkg --noconfirm -si'
-RUN cd /tmp && \
-  runuser nonroot -c 'git clone https://aur.archlinux.org/guacamole-server.git && cd guacamole-server && makepkg --noconfirm -si'
+RUN gpg --recv-keys 9F72CDBC01BF10EB && \
+  yay -S --noconfirm xorgxrdp guacamole-server
 RUN pacman -S --noconfirm openssh
 RUN pacman -Sc --noconfirm
