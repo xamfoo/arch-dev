@@ -1,7 +1,7 @@
 FROM archlinux/base
 
 RUN pacman -Sy
-RUN pacman -S --noconfirm sudo base-devel git
+RUN pacman -S --noconfirm sudo base base-devel git
 RUN useradd -m nonroot && \
   echo "nonroot ALL = (ALL) NOPASSWD: ALL" > /etc/sudoers.d/nonroot && \
   chmod 0440 /etc/sudoers.d/nonroot
@@ -11,3 +11,6 @@ RUN gpg --recv-keys 9F72CDBC01BF10EB && \
   runuser nonroot -c 'yay -S --noconfirm xorgxrdp guacamole-server'
 RUN pacman -S --noconfirm openssh
 RUN pacman -Sc --noconfirm
+
+ENV container docker
+STOPSIGNAL SIGRTMIN +3
