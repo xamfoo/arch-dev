@@ -11,6 +11,6 @@ RUN gpg --recv-keys 9F72CDBC01BF10EB && \
   runuser nonroot -c 'yay -S --noconfirm xorgxrdp guacamole-server'
 RUN pacman -S --noconfirm openssh
 RUN pacman -Sc --noconfirm
-RUN systemctl enable sshd
+RUN systemctl enable sshd xrdp xrdp-sesman guacd
 ENV container docker
 STOPSIGNAL SIGRTMIN+3
