@@ -14,7 +14,7 @@ jobs:
       - run:
           name: Pull Docker image
           command: |
-            docker pull $IMAGE_NAME:latest || true
+            test "$USE_CACHE" -eq "1" && docker pull $IMAGE_NAME:latest || true
       - run:
           name: Build Docker image
           command: |
