@@ -8,8 +8,8 @@ RUN useradd -m nonroot && \
   cd /tmp && \
   runuser nonroot -c 'git clone https://aur.archlinux.org/yay.git && cd yay && makepkg --noconfirm -si' && \
   gpg --recv-keys 9F72CDBC01BF10EB && \
-  runuser nonroot -c 'yay -S --noconfirm xorgxrdp' && \
-  pacman -S --noconfirm openssh xorg xorg-xinit ttf-dejavu && \
+  runuser nonroot -c 'yay -S --noconfirm xorgxrdp'
+RUN pacman -S --noconfirm openssh xorg xorg-xinit ttf-dejavu && \
   pacman -Sc --noconfirm
 RUN echo "allowed_users=anybody" >> /etc/X11/Xwrapper.config && \
   echo 'Defaults env_keep += "http_proxy"' >> /etc/sudoers.d/11-forward-proxy && \
