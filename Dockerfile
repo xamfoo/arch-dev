@@ -20,10 +20,10 @@ RUN echo "allowed_users=anybody" >> /etc/X11/Xwrapper.config && \
   echo 'Defaults env_keep += "FTP_PROXY"' >> /etc/sudoers.d/11-forward-proxy && \
   echo 'Defaults env_keep += "no_proxy"' >> /etc/sudoers.d/11-forward-proxy && \
   echo 'Defaults env_keep += "NO_PROXY"' >> /etc/sudoers.d/11-forward-proxy && \
-  echo '#!/usr/bin/env bash\
-if ! [ -e /dev/console ] ; then\
-  socat -u pty,link=/dev/console stdout &\
-fi\
+  echo $'#!/usr/bin/env bash\n\
+if ! [ -e /dev/console ] ; then\n\
+  socat -u pty,link=/dev/console stdout &\n\
+fi\n\
 exec /usr/lib/systemd/systemd "$@"' > /sbin/init-console && \
   chmod a+x /sbin/init-console && \
   systemctl enable sshd xrdp xrdp-sesman
