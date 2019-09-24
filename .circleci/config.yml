@@ -20,6 +20,10 @@ jobs:
           command: |
             docker build -t $IMAGE_NAME:latest --cache-from $IMAGE_NAME:latest .
       - run:
+          name: Test Docker image
+          command: |
+            [[ -f ./test.sh ]] && ./test.sh
+      - run:
           name: Publish Docker Image to Docker Hub
           command: |
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
