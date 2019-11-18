@@ -20,7 +20,7 @@ RUN echo "allowed_users=anybody" >> /etc/X11/Xwrapper.config && \
   echo 'Defaults env_keep += "FTP_PROXY"' >> /etc/sudoers.d/11-forward-proxy && \
   echo 'Defaults env_keep += "no_proxy"' >> /etc/sudoers.d/11-forward-proxy && \
   echo 'Defaults env_keep += "NO_PROXY"' >> /etc/sudoers.d/11-forward-proxy && \
-  echo $'#!/usr/bin/env bash\n\
+  echo '#!/usr/bin/env bash\n\
 if ! [ -e /dev/console ] ; then\n\
   socat -u pty,link=/dev/console stdout &\n\
 fi\n\
