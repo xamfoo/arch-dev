@@ -27,5 +27,3 @@ fi\n\
 exec /usr/lib/systemd/systemd "$@"' > /sbin/init-console && \
   chmod a+x /sbin/init-console && \
   systemctl enable sshd xrdp xrdp-sesman
-ENV container docker
-STOPSIGNAL SIGRTMIN+3
